@@ -4,8 +4,8 @@ Static site: data studies about Wake County, NC (real estate first; other topics
 
 ## How it deploys
 - Cloudflare Workers Builds is connected to this repo. Every push to `main` runs `npx wrangler deploy`.
-- DEV: only the workers.dev URL is live, and it is noindexed (X-Robots-Tag in `src/worker.js`). The home page also has `noindex: 1` until launch.
-- Domain: registered at GoDaddy. Go-live = add to Cloudflare (Free plan), DNSSEC off at GoDaddy, switch nameservers, wait for Active, then uncomment `routes` in `wrangler.jsonc`. See README.
+- LIVE: `main` = production on wakecountyinfo.com (custom domains in `wrangler.jsonc`; www 301s to the bare domain). DNS on Cloudflare since Oct 28, 2026; domain still registered at GoDaddy. The workers.dev URL is a noindexed preview.
+- The home page keeps `noindex: 1` until the first study is published; then remove it, rebuild, and submit the sitemap in Search Console.
 
 ## Layout
 - `build/content/`: page sources. Each file = `key: value` header, `---`, body HTML. A `.js` file with the same name is inlined as the page script.

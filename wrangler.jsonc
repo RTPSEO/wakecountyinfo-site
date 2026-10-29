@@ -1,6 +1,6 @@
 {
-  // DEV: served on the workers.dev URL only (noindexed in src/worker.js).
-  // Go-live: once wakecountyinfo.com shows Active in Cloudflare, uncomment "routes" and push to main.
+  // LIVE on wakecountyinfo.com (www redirects to the bare domain in src/worker.js).
+  // The workers.dev URL stays up as a noindexed preview.
   "name": "wakecountyinfo-site",
   "workers_dev": true,
   "main": "src/worker.js",
@@ -11,9 +11,9 @@
     "html_handling": "auto-trailing-slash",
     "not_found_handling": "404-page",
     "run_worker_first": true
-  }
-  // ,"routes": [
-  //   { "pattern": "wakecountyinfo.com", "custom_domain": true },
-  //   { "pattern": "www.wakecountyinfo.com", "custom_domain": true }
-  // ]
+  },
+  "routes": [
+    { "pattern": "wakecountyinfo.com", "custom_domain": true },
+    { "pattern": "www.wakecountyinfo.com", "custom_domain": true }
+  ]
 }
