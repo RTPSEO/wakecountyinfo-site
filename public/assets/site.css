@@ -1,0 +1,132 @@
+/* wakecountyinfo.com: "paperwork" theme. Same layout/structure as marketing-raleigh.com. */
+:root{
+  --paper:#F4EEDF; --paper-2:#EDE5D0; --sheet:#FFFDF7;
+  --manila:#E6D3A3; --manila-dk:#C9AE6B; --manila-ink:#6E521A;
+  --ink:#24221E; --muted:#5E584C; --line:#D8CDB3; --rule:#C7D6E6;
+  --stamp:#A8322A; --link:#24477A; --link-line:#A9BAD3;
+  --body:"Source Serif 4",Georgia,"Times New Roman",serif;
+  --type:"Courier Prime","Courier New",Courier,monospace;
+  --stampf:"Special Elite","Courier Prime","Courier New",monospace;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--paper);color:var(--ink);font:18px/1.7 var(--body)}
+img{max-width:100%;height:auto}
+a{color:var(--link);text-decoration-color:var(--link-line);text-decoration-thickness:1.5px;text-underline-offset:3px}
+a:hover{text-decoration-color:var(--link);text-decoration-thickness:2px}
+::selection{background:var(--manila);color:var(--ink)}
+.skip{position:absolute;left:-999px}.skip:focus{left:16px;top:16px;background:var(--sheet);padding:8px 12px;z-index:10}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+.narrow{max-width:760px}
+
+/* header */
+.site-header{background:var(--paper);border-bottom:3px double var(--manila-dk);position:sticky;top:0;z-index:5}
+.header-inner{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:70px;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:12px;color:var(--ink);text-decoration:none}
+.brand .mark{display:block;flex:none}
+.brand strong{display:block;font:700 20px/1.1 var(--type);letter-spacing:-.01em}
+.brand small{display:block;color:var(--muted);font:13px/1.4 var(--type);letter-spacing:.02em}
+.site-nav{display:flex;gap:24px;flex-wrap:wrap;align-items:center}
+.site-nav a{color:var(--muted);text-decoration:none;font:700 15px/1 var(--type);text-transform:uppercase;letter-spacing:.06em;padding:6px 0;border-bottom:2px solid transparent}
+.site-nav a:hover,.site-nav a[aria-current]{color:var(--ink);border-bottom-color:var(--stamp)}
+
+/* hero = manila folder holding a form sheet */
+.hero{padding:56px 0 48px}
+.folder{position:relative;background:var(--manila);border:1px solid var(--manila-dk);border-radius:0 10px 10px 10px;padding:22px;margin-top:30px;box-shadow:0 2px 0 var(--manila-dk),0 10px 24px rgba(80,60,20,.12)}
+.tab{position:absolute;left:-1px;top:-31px;height:31px;padding:0 22px;display:flex;align-items:center;background:var(--manila);border:1px solid var(--manila-dk);border-bottom:0;border-radius:10px 10px 0 0;font:700 13px/1 var(--type);letter-spacing:.1em;color:var(--manila-ink);text-transform:uppercase}
+.sheet{background:var(--sheet);padding:44px 44px 40px;border:1px solid var(--line);box-shadow:0 1px 2px rgba(0,0,0,.06);
+  background-image:linear-gradient(to right,transparent 30px,rgba(168,50,42,.25) 30px,rgba(168,50,42,.25) 31px,transparent 31px)}
+.hero h1{font:700 clamp(34px,5.6vw,60px)/1.05 var(--type);margin:0;letter-spacing:-.02em;max-width:18ch}
+.hero h1 em{font-style:normal;background:linear-gradient(transparent 62%,rgba(230,211,163,.9) 62%)}
+.hero .sub{font-size:20px;color:var(--muted);max-width:54ch;margin:20px 0 0}
+.stamp{display:inline-block;font:15px/1 var(--stampf);text-transform:uppercase;letter-spacing:.12em;color:var(--stamp);border:2px solid var(--stamp);border-radius:4px;padding:7px 12px 6px;margin:0 0 22px;transform:rotate(-2deg);opacity:.9}
+.hero-page{padding:40px 0 32px}
+.hero-page h1{font-size:clamp(30px,4.6vw,46px)}
+
+/* entry */
+.entry{padding:32px 20px 32px}
+.entry-head{margin:24px 0 24px}
+.entry-head h1,.entry h1{font:700 clamp(30px,4.6vw,44px)/1.12 var(--type);margin:0;letter-spacing:-.02em}
+.entry h2,.entry h3,.entry h4{font-family:var(--type);font-weight:700;line-height:1.25;letter-spacing:-.01em;margin:1.9em 0 .5em}
+.entry h2{font-size:28px;padding-bottom:8px;border-bottom:1px dashed var(--manila-dk)}
+.entry h3{font-size:22px}.entry h4{font-size:19px}
+.entry>*:first-child,.entry-head+*{margin-top:0}
+.meta{color:var(--muted);font:14px/1.6 var(--type);margin:0 0 10px}
+.field{display:inline-block;font:700 11px/1 var(--type);letter-spacing:.1em;text-transform:uppercase;color:var(--manila-ink);background:var(--manila);padding:4px 6px;margin-right:4px;border-radius:2px}
+.lead{font-size:20px;color:var(--muted)}
+.crumbs{font:14px var(--type);color:var(--muted);margin:0 0 10px}
+.crumbs a{color:var(--muted)}
+.entry ul,.entry ol{padding-left:1.3em}
+.entry li{margin:.3em 0}
+.entry li::marker{color:var(--stamp)}
+.entry code,.entry pre{font-family:var(--type);font-size:15px}
+.entry figure{margin:28px 0}
+.entry figcaption{color:var(--muted);font:14px var(--type);margin-top:8px}
+
+/* data tables = ledger */
+.entry table{border-collapse:collapse;width:100%;display:block;overflow-x:auto;background:var(--sheet);font-size:16px;border:1px solid var(--line)}
+.entry th,.entry td{border-bottom:1px solid var(--rule);padding:8px 12px;text-align:left;font-variant-numeric:tabular-nums}
+.entry th{font:700 13px/1.3 var(--type);text-transform:uppercase;letter-spacing:.06em;background:var(--paper-2);border-bottom:2px solid var(--ink)}
+.entry td.num,.entry th.num{text-align:right}
+
+/* form-style blocks */
+.form{background:var(--sheet);border:1px solid var(--line);margin:28px 0;box-shadow:0 1px 2px rgba(0,0,0,.05)}
+.form-row{display:grid;grid-template-columns:190px 1fr;border-bottom:1px solid var(--line)}
+.form-row:last-child{border-bottom:0}
+.form-row>b{font:700 12px/1.4 var(--type);letter-spacing:.1em;text-transform:uppercase;color:var(--manila-ink);background:var(--paper-2);padding:14px 16px;border-right:1px solid var(--line)}
+.form-row>div{padding:12px 18px}
+.form-row p{margin:0}
+
+/* numbered boxes (steps) */
+.steps{counter-reset:s;list-style:none;padding:0!important;display:grid;gap:12px;margin:24px 0}
+.steps li{counter-increment:s;position:relative;padding:16px 18px 16px 72px;background:var(--sheet);border:1px solid var(--line);margin:0!important}
+.steps li::before{content:"BOX " counter(s);position:absolute;left:0;top:0;bottom:0;width:58px;display:flex;align-items:center;justify-content:center;background:var(--paper-2);border-right:1px solid var(--line);font:700 11px/1.2 var(--type);letter-spacing:.08em;color:var(--manila-ink);text-align:center;padding:0 6px}
+.steps li b{display:block;font-family:var(--type)}
+
+/* callouts */
+.note{background:var(--sheet);border:1px dashed var(--manila-dk);border-left:4px solid var(--stamp);padding:14px 18px;margin:24px 0}
+.note p{margin:0}
+.empty{font-family:var(--type);color:var(--muted);background:var(--sheet);border:1px dashed var(--manila-dk);padding:18px 20px}
+
+/* study cards = index cards in folders */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:40px 24px;margin-top:40px}
+.card a{position:relative;display:flex;flex-direction:column;height:100%;text-decoration:none;color:inherit;background:var(--manila);border:1px solid var(--manila-dk);border-radius:0 8px 8px 8px;padding:10px;transition:transform .15s}
+.card a:hover{transform:translateY(-3px)}
+.card-tab{position:absolute;left:-1px;top:-26px;height:26px;padding:0 14px;display:flex;align-items:center;background:var(--manila);border:1px solid var(--manila-dk);border-bottom:0;border-radius:8px 8px 0 0;font:700 11px/1 var(--type);letter-spacing:.1em;color:var(--manila-ink)}
+.card-body{flex:1;background:var(--sheet);padding:16px 18px 20px;border-top:3px solid var(--stamp);
+  background-image:repeating-linear-gradient(transparent 0 27px,var(--rule) 27px 28px);background-position:0 44px}
+.card time{color:var(--muted);font:13px var(--type)}
+.card h3{font:700 19px/1.3 var(--type);margin:4px 0 8px}
+.card p{margin:0;color:var(--muted);font-size:16px;line-height:28px}
+
+/* FAQ */
+.faq details{background:var(--sheet);border:1px solid var(--line);padding:0 18px;margin:10px 0}
+.faq summary{cursor:pointer;font:700 17px/1.4 var(--type);padding:14px 0;list-style:none}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";float:right;color:var(--stamp)}
+.faq details[open] summary::after{content:"–"}
+.faq details p{margin:0 0 14px}
+
+.btn{display:inline-block;background:var(--ink);color:var(--sheet);padding:12px 22px;text-decoration:none;font:700 15px/1.3 var(--type);text-transform:uppercase;letter-spacing:.06em;border-radius:2px}
+.btn:hover{background:var(--stamp);color:var(--sheet)}
+
+/* footer */
+.site-footer{background:var(--manila);color:var(--manila-ink);padding:40px 0;margin-top:48px;border-top:3px double var(--manila-dk)}
+.footer-inner{display:flex;flex-wrap:wrap;gap:20px 48px;justify-content:space-between;align-items:flex-start}
+.site-footer strong{color:var(--ink);font:700 18px var(--type)}
+.site-footer .label{font:700 13px var(--type);letter-spacing:.1em;text-transform:uppercase;color:var(--ink)}
+.site-footer a{color:var(--ink);text-decoration-color:var(--manila-dk)}
+.site-footer p{margin:6px 0;max-width:46ch}
+.fine{width:100%;max-width:none!important;font:13px var(--type);border-top:1px solid var(--manila-dk);padding-top:16px}
+
+@media (max-width:700px){
+  body{font-size:17px}
+  .site-nav{gap:16px}
+  .site-nav a{font-size:13px}
+  .header-inner{padding-top:10px;padding-bottom:10px}
+  .hero{padding:44px 0 32px}
+  .folder{padding:10px}
+  .sheet{padding:28px 20px 26px 40px}
+  .form-row{grid-template-columns:1fr}
+  .form-row>b{border-right:0;border-bottom:1px solid var(--line);padding:8px 16px}
+}
