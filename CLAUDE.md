@@ -12,6 +12,7 @@ Static site: data studies about Wake County, NC (real estate first; other topics
 - `build/build.py`: builds `public/` (layout, nav, footer, JSON-LD, sitemap.xml, feed/rss.xml). Run `python3 build/build.py` after any content change and commit `public/` too. Workers Builds does not run the build.
 - `public/`: the deployed site. Don't hand-edit generated HTML. `public/assets/site.css`, `_headers`, `_redirects`, `robots.txt`, `favicon.svg` are hand-maintained.
 - `src/worker.js`: www → bare domain 301, noindex header on workers.dev. No forms yet.
+- Pre-launch: `/` is a bare "Coming soon" page. The full home page draft is at `/draft-home/` (unlisted, noindexed) for Rob to review; at launch it replaces `home.html`.
 - Page kinds: `home`, `page`, `study` (a data study: needs `date`, `file_no`, `topic`, `excerpt`), `plain`. `{{STUDIES}}` / `{{RECENT_STUDIES}}` insert study cards.
 
 ## Rules

@@ -4,7 +4,7 @@
 Each content file starts with "key: value" lines, then a line "---", then the page body HTML.
 Keys: path, title, description, kind (home|page|study|plain), eyebrow, h1, sub,
       date, updated, excerpt, file_no (shown on the folder tab), crumb (parent label|/url/),
-      noindex (1), topic (e.g. Real estate)
+      noindex (1), topic (e.g. Real estate), bare (1 = no nav or footer index: coming-soon / 404)
 
 A .js file with the same name as a content file is inlined as that page's script.
 Placeholders in bodies: {{STUDIES}} (all studies as index cards), {{RECENT_STUDIES}} (latest 3).
@@ -24,9 +24,9 @@ TAGLINE = "Data studies · Wake County, NC"
 CSS_V = "1"
 
 NAV = [
-    ("/#studies", "Studies"),
-    ("/#sources", "Data sources"),
-    ("/#about", "About"),
+    ("#studies", "Studies"),
+    ("#sources", "Data sources"),
+    ("#about", "About"),
 ]
 
 FONTS = ("https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700"
@@ -145,6 +145,10 @@ def page(m):
         inner = f'<div class="wrap narrow entry"><header class="entry-head">{crumbs}<h1>{h1}</h1></header>{m["body"]}'
 
     close = "</article>" if k == "study" else "</div>"
+    bare = m.get("bare") == "1"
+    nav_html = "" if bare else f'<nav class="site-nav" aria-label="Main">{nav(path)}</nav>'
+    foot_index = "" if bare else ('<div><p class="label">Index</p><p><a href="#studies">Studies</a><br>'
+                                  '<a href="#sources">Data sources</a><br><a href="#about">About</a></p></div>')
     main = hero + inner + close
     canonical = SITE + path
 
@@ -177,7 +181,7 @@ def page(m):
 <header class="site-header">
   <div class="wrap header-inner">
     <a class="brand" href="/">{MARK}<span><strong>{BRAND}</strong><small>{TAGLINE}</small></span></a>
-    <nav class="site-nav" aria-label="Main">{nav(path)}</nav>
+    {nav_html}
   </div>
 </header>
 <main id="content">
@@ -189,10 +193,7 @@ def page(m):
       <strong>{BRAND}</strong>
       <p>Independent data studies about Wake County, North Carolina, built from public records.</p>
     </div>
-    <div>
-      <p class="label">Index</p>
-      <p><a href="/#studies">Studies</a><br><a href="/#sources">Data sources</a><br><a href="/#about">About</a></p>
-    </div>
+    {foot_index}
     <p class="fine">© {date.today().year} {BRAND} · Raleigh, North Carolina · Not affiliated with Wake County Government.</p>
   </div>
 </footer>
